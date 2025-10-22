@@ -2,7 +2,7 @@
 import React from "react";
 import { CheckSquare, Repeat, Zap, FileCheck } from "lucide-react";
 
-export default function ChooseYourPerfectRideComponent() {
+export default function IntroducingBharatBMSComponent() {
   const features = [
     {
       id: 1,
@@ -66,18 +66,18 @@ export default function ChooseYourPerfectRideComponent() {
         <div className="w-[94%] border-b border-[#41424A]">
           <div>
             {/* Top Section */}
-            <div className="w-full h-[39vh] flex justify-start items-start ">
-              <div className="w-[75%] text-white p-6">
+            <div className="w-full  flex lg:flex-row flex-col justify-start items-start ">
+              <div className=" w-full lg:w-[75%] text-white  p-2 lg:p-6">
                 <h1
                   style={{ fontFamily: "ppneuebitbold" }}
-                  className="text-9xl max-w-5xl uppercase leading-[0.6]"
+                  className=" text-5xl lg:text-9xl lg:max-w-5xl uppercase leading-[0.6]"
                 >
                   Introducing BharatBMS India's scalable 800V BMS
                 </h1>
               </div>
-              <div className="w-[25%] border-l border-[#41424A] h-full flex justify-center items-center">
+              <div className=" w-full lg:w-[25%] border-l border-[#41424A] h-full flex lg:justify-center items-center p-2 lg:p-0">
                 <img
-                  className="w-full h-full"
+                  className="lg:w-full lg:h-full w-[90vw] h-[35vh]"
                   src="./mb3.png"
                   alt="BharatBMS Hero"
                 />
@@ -91,7 +91,7 @@ export default function ChooseYourPerfectRideComponent() {
                   "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
                 backgroundSize: "40px 40px",
               }}
-              className="w-full h-[20vh] border-b border-[#41424A] flex justify-between items-center px-10 backdrop-blur-sm bg-[#1A1A1A] relative z-20"
+              className="w-full lg:h-[20vh] border-b border-[#41424A] flex lg:flex-row flex-col   justify-between items-start  lg:items-center lg:px-10 backdrop-blur-sm bg-[#1A1A1A] relative z-20"
             >
               {features.map((item) => (
                 <div
@@ -106,20 +106,20 @@ export default function ChooseYourPerfectRideComponent() {
               ))}
             </div>
 
-            <div className="w-full h-[35vh]  bg-[#1A1A1A] flex pl-3 text-[#878A9D]">
-              <div className="border-r border-[#41424A] w-[33%] h-full flex justify-end items-end p-10 hover:text-[#A56EF1]">
+            <div className="w-full lg:h-[35vh]   bg-[#1A1A1A] lg:flex lg:pl-3 text-[#878A9D]">
+              <div className="border-r border-[#41424A] w-full lg:w-[33%] h-full flex justify-end items-end p-10 hover:text-[#A56EF1]">
                 <h1 className="text-2xl">Scalability — modular expansion</h1>
               </div>
 
-              <div className="border-r border-[#41424A] w-[33%] h-full flex justify-end items-end p-10 hover:text-[#F3564C]">
+              <div className="border-r border-[#41424A] w-full lg:w-[33%] h-full flex justify-end items-end p-10 hover:text-[#F3564C]">
                 <h1 className="text-2xl">Diagnostics — real-time monitoring</h1>
               </div>
-              <div className="border-r border-[#41424A] w-[33%] h-full flex justify-end items-end p-10 hover:text-[#97F0E5]">
+              <div className="border-r border-[#41424A] w-full lg:w-[33%] h-full flex justify-end items-end p-10 hover:text-[#97F0E5]">
                 <h1 className="text-2xl">
                   Software — SOC/SOH & C-optimized firmware
                 </h1>
               </div>
-              <div className="border-r border-[#41424A] w-[33%] h-full flex justify-end items-end p-10  hover:text-[#8CF28A]">
+              <div className="border-r border-[#41424A] w-full lg:w-[33%] h-full flex justify-end items-end p-10  hover:text-[#8CF28A]">
                 <h1 className="text-2xl">
                   Made in India — OEM partnerships Jan 2025
                 </h1>

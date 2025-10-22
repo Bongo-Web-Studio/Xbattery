@@ -1,119 +1,174 @@
 "use client";
-import React, { useState } from "react";
-import { FaArrowAltCircleDown, FaArrowCircleDown, FaArrowDown, FaArrowsAlt, FaArrowsAltV, FaBars, FaRegArrowAltCircleDown, FaTimes } from "react-icons/fa";
+import React, { useState, useMemo, lazy, Suspense } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Telkom-style top navigation component
-// - Dark bar
-// - Left boxed logo with faint circular mark
-// - Middle nav items with numeric prefixes (1.0, 2.0 ...)
-// - Right bright CONTACT button
+// ✅ Lazy load icons to reduce initial JS bundle
+const FaBars = lazy(() => import("react-icons/fa").then(m => ({ default: m.FaBars })));
+const FaTimes = lazy(() => import("react-icons/fa").then(m => ({ default: m.FaTimes })));
+
+// ✅ Framer Motion animation variants
+const fadeSlide = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
+const mobileMenuVariants = {
+  hidden: { opacity: 0, y: -15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.25 } },
+};
 
 export default function TelkomNavbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  const links = [
-    { prefix: "1.0", name: "  Energy Storage", to: "/tools" },
-    { prefix: "2.0", name: "BharatBMS", to: "/products" },
-    { prefix: "3.0", name: "About ", to: "/machine-park" },
-    { prefix: "4.0", name: "Blog", to: "/engineering" },
-    { prefix: "5.0", name: "Whitepapers", to: "/about" },
-  ];
-
-
-
-
-
-
-
-
+  // ✅ useMemo to prevent re-creating link array each render
+  const links = useMemo(
+    () => [
+      { prefix: "1.0", name: "Energy Storage", to: "/tools" },
+      { prefix: "2.0", name: "BharatBMS", to: "/products" },
+      { prefix: "3.0", name: "About", to: "/machine-park" },
+      { prefix: "4.0", name: "Blog", to: "/engineering" },
+      { prefix: "5.0", name: "Whitepapers", to: "/about" },
+    ],
+    []
+  );
 
   return (
-    <header className="sticky top-5 left-0 z-50  flex justify-center items-center">
-      <div className="w-[92vw] bg-[#1b1b1b]">
-        <div className="flex items-center">
-          {/* Left: logo box */}
-          <div className="flex items-center  w-full h-full ">
-            <div className="w-[80%] lg:w-[20%]  h-[3.5rem]   flex justify-start items-center  border-r border-r-gray-500">
-              <div className="text-white text-2xl ml-5">
-                Xbattery
-              </div>
-            </div>
+    <motion.header
+      className="sticky top-4 left-0 z-50 flex justify-center items-center w-full"
+      initial="hidden"
+      animate="visible"
+      variants={fadeSlide}
+    >
+      <div className="w-full max-w-[1415px] bg-[#1b1b1b] overflow-hidden  shadow-[0_2px_12px_rgba(0,0,0,0.2)]">
+        <div className="flex items-center justify-between w-full h-[8vh]">
+          {/* Left: Logo */}
+          <div className="flex items-center justify-start w-[60%] sm:w-[40%] md:w-[25%] h-full border-r border-gray-600 px-4">
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-white text-xl sm:text-2xl font-semibold"
+            >
+              Xbattery
+            </motion.span>
+          </div>
 
-            {/* Desktop nav */}
-            <nav className="  w-[70%]  hidden lg:flex items-center ">
-              {links.map((l) => {
-                const active = location.pathname === l.to;
-                return (
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center justify-center w-[60%]">
+            {links.map((l, i) => {
+              const active = location.pathname === l.to;
+              return (
+                <motion.div
+                  key={l.name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                >
                   <Link
-                    key={l.name}
                     to={l.to}
-                    className={`flex items-center gap-2 px-8 h-[3.5rem]  border-r border-r-gray-500  text-sm font-semibold tracking-wide transition-all duration-150 ${
+                    className={`flex items-center gap-2 px-6 xl:px-8 h-[3.5rem] border-r border-gray-600 text-sm font-semibold tracking-wide transition-all duration-150 ${
                       active
                         ? "bg-[#393939] text-white"
                         : "text-[#d6d6d6] hover:bg-[#FF5A4F] hover:text-[#1B1B1B]"
                     }`}
                   >
                     <span className="text-xs text-[#9aa0a4]">{l.prefix}</span>
-                    <span className="uppercase">{l.name}</span>
+                    <span className="uppercase whitespace-nowrap">{l.name}</span>
                   </Link>
-                );
-              })}
-            </nav>
+                </motion.div>
+              );
+            })}
+          </nav>
 
-            {/* Right side: language + contact */}
-            <div className="w-[20%] lg:w-[27%]  flex items-center  justify-center  h-[3.5rem]">
-              <div className=" flex items-center justify-center text-[#d0d0d0]  w-[50%]  h-[3.5rem]  hover:bg-[#97F1E6] hover:text-[#1B1B1B]    ">
-                <div className="px-3 py-2">EN</div>
-       
-              </div>
+          {/* Right Section */}
+          <div className="flex items-center justify-end w-[40%] sm:w-[35%] md:w-[25%] h-full">
+            {/* Language */}
+            <motion.div
+              whileHover={{ backgroundColor: "#97F1E6", color: "#1B1B1B" }}
+              transition={{ duration: 0.2 }}
+              className="flex items-center justify-center w-[40%] sm:w-[35%] md:w-[40%] h-full text-[#d0d0d0] cursor-pointer"
+            >
+              <span className="px-3 py-2 text-sm sm:text-base">EN</span>
+            </motion.div>
 
-              <Link
-                to="/contact"
-                className=" hidden md:flex   h-[3.5rem] w-[50%] justify-center items-center    bg-[#ff5a4f] text-[#1B1B1B] font-semibold shadow-md hover:opacity-95"
-              >
-                CONTACT
-              </Link>
+            {/* Contact Button (Desktop) */}
+            <Link
+              to="/contact"
+              className="hidden md:flex h-full w-[60%] justify-center items-center bg-[#ff5a4f] text-[#1B1B1B] font-semibold hover:opacity-95 transition-all text-sm sm:text-base"
+            >
+              CONTACT
+            </Link>
 
-              {/* mobile menu toggle */}
-              <div
-                className="lg:hidden text-white text-2xl ml-2"
+            {/* Mobile Menu Toggle */}
+            <Suspense fallback={<div className="text-white px-4">...</div>}>
+              <button
+                className="lg:hidden text-white text-2xl px-4 md:px-6 focus:outline-none"
                 onClick={() => setOpen((s) => !s)}
+                aria-label="Toggle menu"
               >
                 {open ? <FaTimes /> : <FaBars />}
-              </div>
-            </div>
+              </button>
+            </Suspense>
           </div>
         </div>
 
-        {/* Mobile slide-down menu */}
-        {open && (
-          <div className="lg:hidden mt-2 bg-[#161616] border border-[#2a2a2a] rounded-md p-4">
-            <div className="flex flex-col gap-3">
-              {links.map((l) => (
-                <Link
-                  key={l.name}
-                  to={l.to}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-3 py-2 rounded text-sm text-[#e5e5e5] hover:bg-[#262626]"
-                >
-                  <span className="text-xs text-[#9aa0a4]">{l.prefix}</span>
-                  <span>{l.name}</span>
-                </Link>
-              ))}
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="lg:hidden bg-[#161616] border-t border-[#2a2a2a] p-4"
+            >
+              <div className="flex flex-col gap-3">
+                {links.map((l, i) => {
+                  const active = location.pathname === l.to;
+                  return (
+                    <motion.div
+                      key={l.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      <Link
+                        to={l.to}
+                        onClick={() => setOpen(false)}
+                        className={`flex items-center gap-3 px-3 py-2 rounded text-sm ${
+                          active
+                            ? "bg-[#393939] text-white"
+                            : "text-[#e5e5e5] hover:bg-[#262626]"
+                        }`}
+                      >
+                        <span className="text-xs text-[#9aa0a4]">{l.prefix}</span>
+                        <span className="uppercase">{l.name}</span>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
 
-              <Link
-                to="/contact"
-                className="mt-2 inline-block px-4 py-2 rounded bg-[#ff5a4f] text-white font-semibold text-center"
-                onClick={() => setOpen(false)}
-              >
-                CONTACT
-              </Link>
-            </div>
-          </div>
-        )}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                >
+                  <Link
+                    to="/contact"
+                    onClick={() => setOpen(false)}
+                    className="mt-2 inline-block px-4 py-2  bg-[#ff5a4f] text-white font-semibold text-center text-sm"
+                  >
+                    CONTACT
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 }

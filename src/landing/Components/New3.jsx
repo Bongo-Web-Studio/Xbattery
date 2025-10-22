@@ -47,17 +47,17 @@ export default function NewsSection({ items }) {
       <div className="w-[3%] border-r  border-gray-500"></div>
       <div className="w-[94%] flex justify-center items-center  border-gray-500">
         {" "}
-        <section className="w-full bg-[#1A1A1A] p-10">
+        <section className="w-full bg-[#1A1A1A]  p-2 lg:p-10">
           <h2
             style={{ fontFamily: "ppneuebitbold" }}
-            className="text-9xl font-bold mb-8 text-white"
+            className=" text-7xl lg:text-9xl font-bold mb-8 text-white"
           >
             Latest Blogs
           </h2>
 
-          <div className="grid grid-cols-12 gap-8 items-start">
+          <div className="flex lg:flex-row flex-col  gap-8 items-start">
             {/* Left: large image panel */}
-            <div className="col-span-5">
+            <div className="">
               <div className="relative overflow-hidden border-3 border-white shadow-lg">
                 {/* background panel to emulate blue filled card from screenshot */}
                 <div className="absolute inset-0 bg-[#3f6fae]" />
@@ -75,21 +75,21 @@ export default function NewsSection({ items }) {
             </div>
 
             {/* Right: list */}
-            <div className="col-span-7">
+            <div className="">
               <div className="space-y-6">
                 {news.map((n, i) => (
                   <div
                     key={n.id}
                     onMouseEnter={() => setActiveIndex(i)}
                     onFocus={() => setActiveIndex(i)}
-                    className={`flex items-start gap-6 p-4 transition-all duration-200  hover:text-black   ${
+                    className={`flex lg:flex-row flex-col items-start gap-6 p-4 transition-all duration-200  hover:text-black   ${
                       i === 0
                         ? "bg-[#96F1E8] text-black p-6  hover:text-black "
                         : "hover:bg-[#96F1E8]  hover:text-black   text-black"
                     }`}
                   >
                     {/* date badge */}
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 ">
                       <span
                         className={`inline-block text-xs tracking-widest font-semibold px-3 py-1  ${
                           i === 0

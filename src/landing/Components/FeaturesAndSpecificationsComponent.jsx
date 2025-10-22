@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function RealJourneysRealStoriesComponent() {
+export default function FeaturesAndSpecificationsComponent() {
   const [selectedModel, setSelectedModel] = useState("Features");
 
   const options = ["Features", "Specifications"];
@@ -85,45 +85,45 @@ export default function RealJourneysRealStoriesComponent() {
             {/* Section Heading */}
             <h1
               style={{ fontFamily: "ppneuebitbold" }}
-              className="text-[200px] text-center text-white  max-w-5xl"
+              className=" text-7xl mt-5 lg:mt-0 lg:text-[200px] text-center text-white  max-w-5xl"
             >
               Xbattery 5 kWh
             </h1>
 
-            <p className="text-xl text-white">
+            <p className="text-xl text-white p-2">
               High-performance lithium battery packs designed for India.
             </p>
 
             {/* Comparison image section */}
-            <div className="flex w-full border border-gray-500 text-white mt-20">
-              <div className="w-[70%] flex justify-start items-start">
+            <div className="flex lg:flex-row flex-col  w-full border border-gray-500 text-white lg:mt-20">
+              <div className=" w-full lg:w-[70%] flex justify-start items-start">
                 <img
-                  className="w-full h-[55vh] object-cover"
+                  className="w-full h-[25vh] lg:h-[55vh] object-cover"
                   src="/xbattery3.jpg"
                   alt="Xbattery 5 kWh"
                 />
               </div>
 
-              <div className="w-[30%] flex flex-col justify-center items-start bg-[#1A1A1A] pl-10">
-                <h1 className="text-2xl">
-                  <span className="text-2xl">Capacity</span>
+              <div className="lg:w-[30%] flex lg:flex-col justify-center items-start bg-[#1A1A1A] p-2  lg:pl-10">
+                <h1 className="text-2xl  w-[50%] lg:w-full">
+                  <span className="text-xl">Capacity</span>
                   <br />
                   <span
                     style={{ fontFamily: "ppneuebitbold" }}
-                    className="text-8xl"
+                    className=" text-7xl lg:text-8xl"
                   >
                     5 kWh
                   </span>
                 </h1>
 
-                <h1 className="text-2xl mt-10">
-                  <span className="text-2xl">Expandable</span>
+                <h1 className="text-2xl lg:mt-10 w-[50%] lg:w-full">
+                  <span className="text-xl">Expandable   Up to </span>
                   <br />
                   <span
                     style={{ fontFamily: "ppneuebitbold" }}
-                    className="text-8xl"
+                    className="text-7xl lg:text-8xl"
                   >
-                    Up to 15 kWh
+                  15 kWh
                   </span>
                 </h1>
               </div>
@@ -131,23 +131,23 @@ export default function RealJourneysRealStoriesComponent() {
 
             {/* Apple-style comparison section */}
             <div className=" w-full flex flex-col justify-start items-center bg-[#121212]">
-              <div className="w-full flex border-t border-gray-700">
+              <div className="w-full flex lg:flex-row flex-col  border-t border-gray-700">
                 {/* 🔹 DYNAMIC LEFT TITLE */}
-                <div className="w-[70%] h-full flex justify-center items-center bg-[#1A1A1A] pl-6">
+                <div className=" w-full lg:w-[70%] h-full flex justify-center items-center bg-[#1A1A1A] pl-6">
                   <motion.h1
                     key={selectedModel}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
                     style={{ fontFamily: "ppneuebitbold" }}
-                    className="text-9xl text-white"
+                    className=" text-7xl lg:text-9xl text-white"
                   >
                     {selectedModel}
                   </motion.h1>
                 </div>
 
                 {/* Right side dropdown */}
-                <div className="w-[30%] h-full flex flex-col justify-center items-start px-10  border-l border-gray-700">
+                <div className=" w-full mb-5 lg:mb-0 lg:w-[30%] h-full flex flex-col justify-center items-start px-10  border-l border-gray-700">
                   <h1 className="text-white mb-4">
                     Select with Xbattery 5 kWh
                   </h1>

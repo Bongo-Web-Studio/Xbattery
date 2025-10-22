@@ -318,7 +318,7 @@ export default function CTASection({ cards = defaultCards, autoplayAll = false }
           <div className="max-w-7xl mx-auto text-center mb-10">
             <h2
               style={{ fontFamily: "ppneuebitbold" }}
-              className="text-3xl md:text-5xl lg:text-7xl xl:text-9xl font-semibold text-white leading-tight"
+              className="text-5xl md:text-5xl lg:text-7xl xl:text-9xl  text-white leading-tight"
             >
               beta testing people review
             </h2>

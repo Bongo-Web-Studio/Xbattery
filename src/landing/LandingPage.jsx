@@ -7,18 +7,22 @@ import HeroSection from "./Section/HeroSection";
 import FooterSection from "./Section/FooterSection";
 import FooterSectionMobile from "./Section/FooterSectionMobile";
 import ContactFAQuestionsSection from "./Section/ContactFAQuestionsSection";
-import JourneyCountSection from "./Section/JourneyCountSection";
+import JourneyCountSection from "./Section/PreOrderSection";
 
 // Components
-import BookingComponent from "./Components/BookingComponent";
-import ChooseYourPerfectRideComponent from "./Components/ChooseYourPerfectRideComponent";
-import RealJourneysRealStoriesComponent from "./Components/RealJourneysRealStoriesComponent";
+import BookingComponent from "./Components/TrustedByMarqueeComponent";
+import ChooseYourPerfectRideComponent from "./Components/IntroducingBharatBMSComponent";
+import RealJourneysRealStoriesComponent from "./Components/FeaturesAndSpecificationsComponent";
 import PopularCabRoutesComponent from "./Components/PopularCabRoutesComponent";
 import CTASection from "./Components/CTASection";
 import CTASectionMobile from "./Components/CTASectionMobile";
 import New2 from "./Components/New2";
 import NewsSection from "./Components/New3";
 import Footer from "./Section/FooterSection";
+import TrustedByMarqueeComponent from "./Components/TrustedByMarqueeComponent";
+import IntroducingBharatBMSComponent from "./Components/IntroducingBharatBMSComponent";
+import FeaturesAndSpecificationsComponent from "./Components/FeaturesAndSpecificationsComponent";
+import PreOrderSection from "./Section/PreOrderSection";
 
 /**
  * LandingPage Component
@@ -49,17 +53,17 @@ export default function LandingPage() {
       {/* Optional alternate hero */}
 
       {/* 🚕 Booking */}
-      <BookingComponent />
+      <TrustedByMarqueeComponent />
 
       {/* 🛞 Choose Your Ride */}
-      <ChooseYourPerfectRideComponent />
+      <IntroducingBharatBMSComponent />
       {/* <HeroSection /> */}
 
       {/* 📊 Journey Count */}
-      <JourneyCountSection />
+      <PreOrderSection />
 
       {/* 🌍 Real Stories */}
-      <RealJourneysRealStoriesComponent />
+      <FeaturesAndSpecificationsComponent />
 
       {/* 🛣️ Popular Routes */}
       <PopularCabRoutesComponent />

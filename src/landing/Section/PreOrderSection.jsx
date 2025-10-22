@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function JourneyCountSection() {
+export default function PreOrderSection() {
   const numberRef = useRef(null);
 
   useEffect(() => {
@@ -56,14 +56,14 @@ export default function JourneyCountSection() {
               className="flex flex-col justify-center items-center"
             >
               {/* Heading */}
-              <h1  style={{ fontFamily: "ppneuebitbold" }} className="text-3xl sm:text-5xl md:text-6xl  text-start lg:text-7xl xl:text-8xl font-semibold max-w-5xl leading-tight">
+              <h1  style={{ fontFamily: "ppneuebitbold" }} className="text-5xl md:text-6xl  text-center lg:text-7xl xl:text-8xl  max-w-5xl leading-tight">
                 Totally Pre Order since we start
               </h1>
 
               {/* Animated Number */}
               <h2  style={{ fontFamily: "ppneuebitbold" }}
                 ref={numberRef}
-                className="text-[90px] sm:text-[130px] md:text-[200px] lg:text-[280px] font-bold text-[#97F1E6]  leading-none select-none w-full border-t border-gray-500 bg-[#1A1A1A]"
+                className="text-[120px] sm:text-[130px] md:text-[200px] lg:text-[280px]  text-[#97F1E6]  leading-none select-none w-full border-t border-gray-500 bg-[#1A1A1A]"
               >
                 31,527
               </h2>

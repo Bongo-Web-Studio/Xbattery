@@ -35,22 +35,22 @@ export default function ContactFAQuestionsSection() {
       <div className="w-[94%] border border-gray-500">
         <section className="w-full">
           <div className="overflow-hidden">
-            <div className="flex w-full justify-center items-center border-b border-gray-500 h-[30vh]">
-              <div className="w-[60%] border-r border-gray-500  bg-[#1A1A1A] flex items-start h-full">
+            <div className="flex lg:flex-row flex-col w-full justify-center items-center border-b border-gray-500 h-[30vh]">
+              <div className="w-full lg:w-[60%] border-r border-gray-500  bg-[#1A1A1A] flex items-start h-full">
                 <h1
                   style={{ fontFamily: "ppneuebitbold" }}
-                  className="mt-8 ml-8 text-9xl font-semibold text-white"
+                  className="mt-8 lf:ml-8 text-7xl  lg:text-9xl text-white text-center  w-full "
                 >
                   How It Works
                 </h1>
               </div>
-              <div className="w-[40%] p-5 text-white text-xl ">
+              <div className=" w-full lg:w-[40%] p-5 text-white text-xl mb-2">
                 You're covered at every stage of an outage. Its intelligent modes kick in before the power goes out, ensuring you stay powered through any disruption.
               </div>
             </div>
 
             {/* Grid of static cards (no animations) */}
-            <div className="flex justify-center items-center gap-10 p-10">
+            <div className="flex lg:flex-row flex-col  justify-center items-center gap-10 p-10">
               {steps.map((step) => (
                 <div
                   key={step.id}
