@@ -1,198 +1,121 @@
 "use client";
-import { useState } from "react";
-import { FaChevronDown, FaArrowRight } from "react-icons/fa";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const faqs = [
-  {
-    question: "What is GaadiCab car rental company?",
-    answer:
-      "GaadiCab is a trusted outstation car rental service provider offering reliable rides across India.",
-  },
-  {
-    question: "Why should I book through GaadiCab?",
-    answer:
-      "We offer transparent pricing, professional drivers, clean vehicles, and 24x7 support.",
-  },
-  {
-    question: "How do I book on GaadiCab?",
-    answer:
-      "You can book via our website www.gaadicab.com, our Android App, or call us at +91 9665703666.",
-  },
-  {
-    question: "What are the different modes of payment you support?",
-    answer:
-      "We support multiple payment options including UPI, net banking, credit/debit cards, and wallets.",
-  },
-  {
-    question:
-      "Is it safe to use my credit/debit card on your site? Do you store my card number and details?",
-    answer:
-      "Yes, it’s completely safe. We use Razorpay and PayPal gateways with SSL encryption. GaadiCab does not store your card details.",
-  },
-  {
-    question: "Can I change or cancel the booking?",
-    answer:
-      "Yes, you can modify or cancel bookings as per our cancellation policy. Check the terms on our website.",
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactFAQuestionsSection() {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
+  const containerRef = useRef(null);
+  const cardsRef = useRef([]);
 
-  const toggleIndex = (index) =>
-    setActiveIndex(activeIndex === index ? null : index);
+  useEffect(() => {
+    // cleanup previous refs
+    cardsRef.current = cardsRef.current.slice(0);
 
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const ctx = gsap.context(() => {
+      const cards = cardsRef.current.filter(Boolean);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Message sent successfully!");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
-  };
+      // Timeline that will scrub with the page and pin the grid container
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top+=80",      // when container top hits 80px from top of viewport
+          end: () => `+=${600 + cards.length * 300}`, // length of scroll area (tweak as needed)
+          scrub: 0.6,                // smooth scrub — animation follows scroll
+          pin: containerRef.current, // pin the whole section/grid while animating
+          pinSpacing: true,
+          markers: false,            // set true to debug markers
+        },
+      });
+
+      // initial state offscreen/faded
+      gsap.set(cards, { y: 80, opacity: 0, scale: 0.98, transformOrigin: "center center" });
+
+      // staggered entrance as timeline progresses
+      tl.to(cards, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: {
+          each: 0.35,   // delay between cards
+          from: "left", // stagger order: left -> right
+        },
+      });
+
+      // optional: a subtle lift or bounce after all cards are visible
+      tl.to(cards, {
+        y: -8,
+        duration: 0.35,
+        ease: "power1.out",
+        stagger: 0.06,
+        yoyo: true,
+        repeat: 1,
+      }, "+=0.1");
+
+      // If you want each card to animate individually on the pin scroll (one card per portion),
+      // you can split the timeline into smaller tweens keyed to progress (advanced).
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const steps = [
+    {
+      id: 1,
+      title: "Test your whole body",
+      desc: "Get a comprehensive blood draw at one of our partner labs.",
+      img: "https://images.unsplash.com/photo-1588776814546-efb7bb0b4e4c?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      id: 2,
+      title: "An actionable plan",
+      desc: "Easy to understand results and a clear health plan personalized for you.",
+      img: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      id: 3,
+      title: "A connected ecosystem",
+      desc: "Book additional diagnostics and connect your data for deeper insights.",
+      img: "https://images.unsplash.com/photo-1598970434795-0c54fe7c0649?auto=format&fit=crop&w=1200&q=80",
+    },
+  ];
 
   return (
-    <section className="w-full min-h-screen bg-[#0F0F0F] text-white px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-20">
-      <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-7xl">
-        {/* LEFT: CONTACT FORM */}
-        <div className="flex flex-col sm:gap-1">
-          <h2 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-semibold leading-tight  mt-3">
-            Contact{" "}
-            <span className="text-[#26CC6B] text-4xl sm:text-6xl md:text-7xl">
-              GaadiCab
-            </span>
-          </h2>
-
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 sm:gap-5 p-5 sm:p-6 border border-dashed border-white/50 -2xl mt-3"
-          >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Full Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="p-3 -md border border-dashed border-white/40 focus:border-[#DD9FFE] outline-none bg-transparent text-white placeholder-gray-400"
-            />
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="p-3 -md border border-dashed border-white/40 focus:border-[#DD9FFE] outline-none bg-transparent text-white placeholder-gray-400"
-            />
-
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Your Phone Number"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="p-3 -md border border-dashed border-white/40 focus:border-[#DD9FFE] outline-none bg-transparent text-white placeholder-gray-400"
-            />
-
-            <select
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-              className="p-3 -md bg-transparent border border-dashed border-white/40 focus:border-[#DD9FFE] outline-none text-white placeholder-gray-400"
-            >
-              <option value="" disabled className="bg-black">
-                Select Subject
-              </option>
-              <option className="bg-[#0F0F0F]" value="Cab Booking">
-                Cab Booking
-              </option>
-              <option className="bg-[#0F0F0F]" value="Booking Modification">
-                Booking Modification
-              </option>
-              <option className="bg-[#0F0F0F]" value="Refund or Cancellation">
-                Refund or Cancellation
-              </option>
-              <option className="bg-[#0F0F0F]" value="Driver Complaint">
-                Driver Complaint / Misbehavior
-              </option>
-              <option className="bg-[#0F0F0F]" value="Corporate Inquiry">
-                Corporate Inquiry
-              </option>
-              <option className="bg-[#0F0F0F]" value="Other">
-                Other
-              </option>
-            </select>
-
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows="4"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="p-3 -md border border-dashed border-white/40 focus:border-[#DD9FFE] outline-none bg-transparent text-white placeholder-gray-400 resize-none"
-            ></textarea>
-
-            <button
-              type="submit"
-              className="flex items-center justify-center gap-2 border border-dashed border-[#26CC6B] text-[#26CC6B] hover:text-black hover:bg-[#26CC6B] py-3 font-medium -md transition-all duration-300"
-            >
-              Send Message <FaArrowRight />
-            </button>
-          </form>
+    <section className="w-full  py-20 px-6">
+      <div className="max-w-6xl mx-auto" ref={containerRef}>
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-semibold text-gray-900">How it works</h2>
         </div>
 
-        {/* RIGHT: FAQ SECTION */}
-        <div className="flex flex-col">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold  leading-tight">
-            <span className="text-[#26CC6B]">F A </span>Questions
-          </h2>
-
-          <div className="flex flex-col gap-3 sm:gap-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="p-4 sm:p-5 border border-dashed border-white/30 hover:border-[#DD9FFE]/80 transition-all duration-300 cursor-pointer -xl"
-                onClick={() => toggleIndex(index)}
-              >
-                <div className="flex justify-between items-center">
-                  <h4 className="text-base sm:text-lg md:text-xl font-medium">
-                    {faq.question}
-                  </h4>
-                  <FaChevronDown
-                    className={`transition-transform duration-300 ${
-                      activeIndex === index
-                        ? "rotate-180 text-[#DD9FFE]"
-                        : "text-white/70"
-                    }`}
-                  />
-                </div>
-
-                {activeIndex === index && (
-                  <p className="text-gray-400 mt-3 text-sm sm:text-base leading-relaxed">
-                    {faq.answer}
-                  </p>
-                )}
+        {/* pinned grid that will animate */}
+        <div className="grid md:grid-cols-3 gap-12 items-start">
+          {steps.map((step, i) => (
+            <div
+              key={step.id}
+              ref={(el) => (cardsRef.current[i] = el)}
+              className="flex flex-col items-center text-center bg-white"
+            >
+              <div className="rounded-2xl overflow-hidden shadow-md mb-6 w-full aspect-[4/3]">
+                <img
+                  src={step.img}
+                  alt={step.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            ))}
-          </div>
+
+              <div className="flex items-center justify-center mb-3">
+                <span className="text-white bg-orange-500 rounded px-3 py-1 font-semibold">
+                  {step.id}
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
+              <p className="text-gray-600 max-w-xs mx-auto">{step.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

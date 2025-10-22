@@ -16,6 +16,8 @@ import RealJourneysRealStoriesComponent from "./Components/RealJourneysRealStori
 import PopularCabRoutesComponent from "./Components/PopularCabRoutesComponent";
 import CTASection from "./Components/CTASection";
 import CTASectionMobile from "./Components/CTASectionMobile";
+import New2 from "./Components/New2";
+import NewsSection from "./Components/New3";
 
 /**
  * LandingPage Component
@@ -44,30 +46,30 @@ export default function LandingPage() {
       {/* 🌟 Hero Section */}
       <HeroSection1 />
       {/* Optional alternate hero */}
-  
 
       {/* 🚕 Booking */}
       <BookingComponent />
 
       {/* 🛞 Choose Your Ride */}
       <ChooseYourPerfectRideComponent />
-    {/* <HeroSection /> */}
-   
+      {/* <HeroSection /> */}
 
       {/* 📊 Journey Count */}
       <JourneyCountSection />
 
       {/* 🌍 Real Stories */}
-      {/* <RealJourneysRealStoriesComponent /> */}
+      <RealJourneysRealStoriesComponent />
 
       {/* 🛣️ Popular Routes */}
-      {/* <PopularCabRoutesComponent /> */}
+      <PopularCabRoutesComponent />
 
       {/* 📞 Contact & FAQ */}
-      {/* <ContactFAQuestionsSection /> */}
+      <ContactFAQuestionsSection />
 
       {/* ⚡ Responsive CTA */}
-      {/* {isMobile ? <CTASectionMobile /> : <CTASection />} */}
+      <CTASection />
+      <New2/>
+      <NewsSection/>
 
       {/* 🧭 Footer */}
       {/* {isMobile ? <FooterSectionMobile /> : <FooterSection />} */}
