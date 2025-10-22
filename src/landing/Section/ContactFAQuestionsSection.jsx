@@ -1,123 +1,87 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 export default function ContactFAQuestionsSection() {
-  const containerRef = useRef(null);
-  const cardsRef = useRef([]);
-
-  useEffect(() => {
-    // cleanup previous refs
-    cardsRef.current = cardsRef.current.slice(0);
-
-    const ctx = gsap.context(() => {
-      const cards = cardsRef.current.filter(Boolean);
-
-      // Timeline that will scrub with the page and pin the grid container
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top+=80",      // when container top hits 80px from top of viewport
-          end: () => `+=${600 + cards.length * 300}`, // length of scroll area (tweak as needed)
-          scrub: 0.6,                // smooth scrub — animation follows scroll
-          pin: containerRef.current, // pin the whole section/grid while animating
-          pinSpacing: true,
-          markers: false,            // set true to debug markers
-        },
-      });
-
-      // initial state offscreen/faded
-      gsap.set(cards, { y: 80, opacity: 0, scale: 0.98, transformOrigin: "center center" });
-
-      // staggered entrance as timeline progresses
-      tl.to(cards, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: {
-          each: 0.35,   // delay between cards
-          from: "left", // stagger order: left -> right
-        },
-      });
-
-      // optional: a subtle lift or bounce after all cards are visible
-      tl.to(cards, {
-        y: -8,
-        duration: 0.35,
-        ease: "power1.out",
-        stagger: 0.06,
-        yoyo: true,
-        repeat: 1,
-      }, "+=0.1");
-
-      // If you want each card to animate individually on the pin scroll (one card per portion),
-      // you can split the timeline into smaller tweens keyed to progress (advanced).
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const steps = [
     {
       id: 1,
-      title: "Test your whole body",
-      desc: "Get a comprehensive blood draw at one of our partner labs.",
-      img: "https://images.unsplash.com/photo-1588776814546-efb7bb0b4e4c?auto=format&fit=crop&w=1200&q=80",
+      title: "Normal Mode",
+      desc: "In Normal Mode, the 5kWh Xbattery provides reliable power for your home, ensuring daily activities run smoothly without any interruptions.",
+      video: "https://xbattery.energy/videos/steps/1.mp4",
     },
     {
       id: 2,
-      title: "An actionable plan",
-      desc: "Easy to understand results and a clear health plan personalized for you.",
-      img: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1200&q=80",
+      title: "Backup Power",
+      desc: "When a power outage occurs, the 5kWh Xbattery instantly switches to backup mode, keeping your home powered for up to a day without interruption.",
+      video: "https://xbattery.energy/videos/steps/2.mp4",
     },
     {
       id: 3,
-      title: "A connected ecosystem",
-      desc: "Book additional diagnostics and connect your data for deeper insights.",
-      img: "https://images.unsplash.com/photo-1598970434795-0c54fe7c0649?auto=format&fit=crop&w=1200&q=80",
+      title: "Power Restoration",
+      desc: "Once the grid power is restored, the 5kWh Xbattery automatically switches back to normal mode, ensuring a smooth and seamless transition.",
+      video: "https://xbattery.energy/videos/steps/3.mp4",
+    },
+    {
+      id: 4,
+      title: "Solar Integration",
+      desc: "The 5kWh Xbattery works seamlessly with your solar system, managing energy usage and maximizing storage to reduce your reliance on the grid.",
+      video: "https://xbattery.energy/videos/steps/4.mp4",
     },
   ];
 
   return (
-    <section className="w-full  py-20 px-6">
-      <div className="max-w-6xl mx-auto" ref={containerRef}>
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-semibold text-gray-900">How it works</h2>
-        </div>
-
-        {/* pinned grid that will animate */}
-        <div className="grid md:grid-cols-3 gap-12 items-start">
-          {steps.map((step, i) => (
-            <div
-              key={step.id}
-              ref={(el) => (cardsRef.current[i] = el)}
-              className="flex flex-col items-center text-center bg-white"
-            >
-              <div className="rounded-2xl overflow-hidden shadow-md mb-6 w-full aspect-[4/3]">
-                <img
-                  src={step.img}
-                  alt={step.title}
-                  className="w-full h-full object-cover"
-                />
+    <div className="flex w-full justify-center items-center bg-[#121212] border-t border-gray-500">
+      <div className="w-[3%] border-r border-b border-gray-500" />
+      <div className="w-[94%] border border-gray-500">
+        <section className="w-full">
+          <div className="overflow-hidden">
+            <div className="flex w-full justify-center items-center border-b border-gray-500 h-[30vh]">
+              <div className="w-[60%] border-r border-gray-500  bg-[#1A1A1A] flex items-start h-full">
+                <h1
+                  style={{ fontFamily: "ppneuebitbold" }}
+                  className="mt-8 ml-8 text-9xl font-semibold text-white"
+                >
+                  How It Works
+                </h1>
               </div>
-
-              <div className="flex items-center justify-center mb-3">
-                <span className="text-white bg-orange-500 rounded px-3 py-1 font-semibold">
-                  {step.id}
-                </span>
+              <div className="w-[40%] p-5 text-white text-xl ">
+                You're covered at every stage of an outage. Its intelligent modes kick in before the power goes out, ensuring you stay powered through any disruption.
               </div>
-
-              <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
-              <p className="text-gray-600 max-w-xs mx-auto">{step.desc}</p>
             </div>
-          ))}
-        </div>
+
+            {/* Grid of static cards (no animations) */}
+            <div className="flex justify-center items-center gap-10 p-10">
+              {steps.map((step) => (
+                <div
+                  key={step.id}
+                  className="faq-card flex flex-col items-start  bg-[#1A1A1A] text-white border border-gray-500 p-4 max-w-xs"
+                >
+                  <div className="overflow-hidden mb-6 w-full aspect-[4/3] border border-gray-400">
+                    <video
+                      src={step.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div className="flex items-start justify-start mb-3">
+                    <span className="text-white bg-[#1A1A1A] border border-gray-500 px-3 py-1 font-semibold">
+                      {step.id}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
+                  <p className="text-gray-400 max-w-xs mx-auto text-[14px]">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+      <div className="w-[3%] border border-gray-500" />
+    </div>
   );
 }

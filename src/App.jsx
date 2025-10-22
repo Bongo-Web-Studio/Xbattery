@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import LandingPage from "./landing/LandingPage";
 import NavbarSection from "./landing/Section/NavbarSection";
 import StartBooking from "./StartBooking/StartBooking";
-import FooterSectionMobile from "./landing/Section/FooterSectionMobile";
-import FooterSection from "./landing/Section/FooterSection";
+
+import Footer from "./landing/Section/FooterSection";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -18,7 +18,12 @@ export default function App() {
   }, []); // ✅ run once
 
   return (
-    <div className="bg-gradient-to-r from-[#0C0D0E] to-[#040201] overflow-hidden">
+    <div className="bg-gradient-to-r from-[#0C0D0E] to-[#040201] overflow-hidden relative">
+      <div className="h-[7vh] bg-[#A46FF1] flex justify-center items-center gap-5 ">
+        <h1 className="text-2xl">Xbattery Raises <span           style={{ fontFamily: "ppneuebitbold" }} className="text-4xl ml-2 mr-2 text-white"> $2.3M </span> in Seed Round</h1>
+
+        <h1 className="text-xl bg-black text-white p-1">Read More</h1>
+      </div>
       <NavbarSection />
 
       <Routes>
@@ -26,13 +31,7 @@ export default function App() {
         <Route path="/startbooking" element={<StartBooking />} />
       </Routes>
 
-      {isMobile ? <FooterSectionMobile /> : <FooterSection />}
-
-      <img
-        className="w-full h-screen object-contain"
-        src="./Screenshot 2025-10-18 051528.png"
-        alt=""
-      />
+      <Footer />
     </div>
   );
 }

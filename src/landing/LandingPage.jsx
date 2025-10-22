@@ -18,6 +18,7 @@ import CTASection from "./Components/CTASection";
 import CTASectionMobile from "./Components/CTASectionMobile";
 import New2 from "./Components/New2";
 import NewsSection from "./Components/New3";
+import Footer from "./Section/FooterSection";
 
 /**
  * LandingPage Component
@@ -71,8 +72,6 @@ export default function LandingPage() {
       <New2/>
       <NewsSection/>
 
-      {/* 🧭 Footer */}
-      {/* {isMobile ? <FooterSectionMobile /> : <FooterSection />} */}
     </main>
   );
 }

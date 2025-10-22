@@ -5,30 +5,40 @@ import { motion } from "framer-motion";
 export default function RealJourneysRealStoriesComponent() {
   const [selectedModel, setSelectedModel] = useState("Features");
 
-  const option = ["Features", "Specifications"];
+  const options = ["Features", "Specifications"];
 
-  // --- Render Blocks ---
+  const featuresList = [
+    {
+      title: "Reliable Backup",
+      desc: "Powers your home for up to a day during outages.",
+    },
+    {
+      title: "Solar Safeguard",
+      desc: "Stops charging automatically when the battery is full.",
+    },
+    {
+      title: "Intelligent Modes",
+      desc: "Adjusts for power cuts and restores seamlessly.",
+    },
+    {
+      title: "Expandable System",
+      desc: "Add modules as your energy needs grow.",
+    },
+  ];
+
+  const specsList = [
+    { title: "Size and Weight", desc: "37 kgs" },
+    { title: "Energy Capacity", desc: "5 kWh" },
+    { title: "Scalable", desc: "15 kWh" },
+    {
+      title: "Certification",
+      desc: "IS 17387 · IEC 61000 Series · ROHS/UL 94V0",
+    },
+  ];
+
   const renderFeatures = () => (
     <div className="flex flex-wrap w-full border border-gray-500 gap-10 justify-center items-center p-10">
-      {[
-        {
-          title: "Reliable Backup",
-          
-          desc: "Powers your home for up to a day during outages.",
-        },
-        {
-          title: "Solar Safeguard",
-          desc: "Stops charging automatically when the battery is full.",
-        },
-        {
-          title: "Intelligent Modes",
-          desc: "Adjusts for power cuts and restores seamlessly.",
-        },
-        {
-          title: "Expandable System",
-          desc: "Add modules as your energy needs grow.",
-        },
-      ].map((item, idx) => (
+      {featuresList.map((item, idx) => (
         <div
           key={idx}
           className="bg-[#1A1A1A] h-[8cm] w-[8cm] border border-gray-500 flex items-center p-4"
@@ -44,15 +54,7 @@ export default function RealJourneysRealStoriesComponent() {
 
   const renderSpecifications = () => (
     <div className="flex flex-wrap w-full border border-gray-500 gap-10 justify-center items-center p-10">
-      {[
-        { title: "Size and Weight", desc: "37 kgs" },
-        { title: "Energy Capacity", desc: "5 kWh" },
-        { title: "Scalable", desc: "Up to 15 kWh" },
-        {
-          title: "Certification",
-          desc: "IS 17387 · IEC 61000 Series · ROHS/UL 94V0",
-        },
-      ].map((item, idx) => (
+      {specsList.map((item, idx) => (
         <div
           key={idx}
           className="bg-[#1A1A1A] h-[8cm] w-[8cm] border border-gray-500 flex items-center p-4"
@@ -66,7 +68,6 @@ export default function RealJourneysRealStoriesComponent() {
     </div>
   );
 
-  // --- Main Component ---
   return (
     <section className="w-full h-full flex flex-col justify-center items-center bg-[#121212]">
       {/* Top grid row */}
@@ -84,14 +85,13 @@ export default function RealJourneysRealStoriesComponent() {
             {/* Section Heading */}
             <h1
               style={{ fontFamily: "ppneuebitbold" }}
-              className="text-9xl text-center text-white p-10 max-w-xl"
+              className="text-[200px] text-center text-white  max-w-5xl"
             >
-              Build with Confidence
+              Xbattery 5 kWh
             </h1>
 
             <p className="text-xl text-white">
-              From code to content, your data is always accessible and
-              verifiable.
+              High-performance lithium battery packs designed for India.
             </p>
 
             {/* Comparison image section */}
@@ -100,57 +100,56 @@ export default function RealJourneysRealStoriesComponent() {
                 <img
                   className="w-full h-[55vh] object-cover"
                   src="/xbattery3.jpg"
-                  alt="Battery Display"
+                  alt="Xbattery 5 kWh"
                 />
               </div>
 
               <div className="w-[30%] flex flex-col justify-center items-start bg-[#1A1A1A] pl-10">
                 <h1 className="text-2xl">
-                  <span className="text-2xl">
-                    Up to <br />
-                  </span>
+                  <span className="text-2xl">Capacity</span>
+                  <br />
                   <span
                     style={{ fontFamily: "ppneuebitbold" }}
                     className="text-8xl"
                   >
-                    8x
+                    5 kWh
                   </span>
-                  <br />
-                  optical-quality zoom
                 </h1>
 
-                <h1 className="text-2xl mt-14">
-                  <span className="text-2xl">
-                    All
-                    <br />
-                  </span>
+                <h1 className="text-2xl mt-10">
+                  <span className="text-2xl">Expandable</span>
+                  <br />
                   <span
                     style={{ fontFamily: "ppneuebitbold" }}
                     className="text-8xl"
                   >
-                    48MP
+                    Up to 15 kWh
                   </span>
-                  <br />
-                  rear cameras
                 </h1>
               </div>
             </div>
 
             {/* Apple-style comparison section */}
-            <div className="h-[90vh] w-full flex flex-col justify-start items-center bg-[#121212]">
+            <div className=" w-full flex flex-col justify-start items-center bg-[#121212]">
               <div className="w-full flex border-t border-gray-700">
+                {/* 🔹 DYNAMIC LEFT TITLE */}
                 <div className="w-[70%] h-full flex justify-center items-center bg-[#1A1A1A] pl-6">
-                  <h1
+                  <motion.h1
+                    key={selectedModel}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
                     style={{ fontFamily: "ppneuebitbold" }}
                     className="text-9xl text-white"
                   >
-                    Worth the upgrade? 100%.
-                  </h1>
+                    {selectedModel}
+                  </motion.h1>
                 </div>
 
+                {/* Right side dropdown */}
                 <div className="w-[30%] h-full flex flex-col justify-center items-start px-10  border-l border-gray-700">
                   <h1 className="text-white mb-4">
-                    Select an iPhone to compare with iPhone 17 Pro
+                    Select with Xbattery 5 kWh
                   </h1>
 
                   <select
@@ -168,26 +167,22 @@ export default function RealJourneysRealStoriesComponent() {
                       backgroundSize: "1rem",
                     }}
                   >
-                    {option.map((model, index) => (
+                    {options.map((model, index) => (
                       <option key={index} value={model}>
                         {model}
                       </option>
                     ))}
                   </select>
-
-                  <p className="text-gray-400 text-sm mt-3">
-                    Compare every detail and see which iPhone suits you best.
-                  </p>
                 </div>
               </div>
 
-              {/* CONDITIONAL RENDER: features or specifications */}
+              {/* Conditional render */}
               <motion.div
                 key={selectedModel}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.28 }}
-                className="w-full"
+                className="w-full "
               >
                 {selectedModel === "Features"
                   ? renderFeatures()

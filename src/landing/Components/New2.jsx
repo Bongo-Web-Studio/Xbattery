@@ -4,58 +4,39 @@ import React from "react";
 export default function New2() {
   const speakers = [
     {
-      name: "Tabitha Brown",
-      title: "ACTRESS, ENTREPRENEUR, 4X BESTSELLING AUTHOR",
-      tag: "KEYNOTE SPEAKER",
-      bg: "bg-[#00C8FF]",
-      img: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Tabitha_Brown_2021.jpg",
+      name: "Satish Reddy ",
+      title: "Founder & CEO of Xbattery ",
+      tag: "Ex-Microsoft",
+      bg: "bg-[#96F1E8]",
+      img: "https://media.licdn.com/dms/image/v2/D5603AQHqf0LTNEUzSw/profile-displayphoto-scale_400_400/B56ZlxEb7yKIAg-/0/1758538613019?e=1762992000&v=beta&t=PZ64aOmB7zffCamYFCRv90WlKqZAC60KwrsWfTXXUnI",
     },
     {
-      name: "Ravi Rajamani",
-      title: "HEAD OF GEN AI\nGOOGLE CLOUD",
-      company: "Google Cloud",
-      bg: "bg-[#CEFF00]",
-      img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Blank_portrait_placeholder.png",
+      name: "Sonu Mishra",
+      title: "Co-Founder & CTO of Xbattery",
+      company: "CTO",
+      bg: "bg-[#A46FF1]",
+      img: "https://media.licdn.com/dms/image/v2/D4E03AQHCapSM4Jh_TQ/profile-displayphoto-scale_400_400/B4EZmBXi1VKgAg-/0/1758812063570?e=1762992000&v=beta&t=_FJS3peknKHchStKgWZeJPe7sUayFsR40M-Dq89tD_4",
     },
     {
-      name: "Jo Redfern",
-      title: "FOUNDER\nFUTRHOOD MEDIA",
+      name: "Varshith Rao",
+      title: "Co-founder  of Xbattery ",
       companyLogo:
-        "https://upload.wikimedia.org/wikipedia/commons/d/d7/Blank_portrait_placeholder.png",
-      bg: "bg-white",
-      img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Blank_portrait_placeholder.png",
+        "https://xbattery.energy/_next/image?url=%2Fimages%2Flogo1.webp&w=384&q=75",
+      bg: "bg-[#8DF28B]",
+      img: "https://media.licdn.com/dms/image/v2/D5603AQGilYy8kfLpHA/profile-displayphoto-scale_400_400/B56ZnDfHvRHAAg-/0/1759921344776?e=1762992000&v=beta&t=vnSYqHvbKqSUYhabsopMmdDJ_BL-h1DKV7Db-K7p6iQ ",
     },
     {
-      name: "Andy Pearson",
-      title: "VP OF CREATIVE\nLIQUID DEATH",
+      name: "Xbattery Team",
+      title: "ower Whole Team ",
       companyLogo:
-        "https://upload.wikimedia.org/wikipedia/commons/d/d7/Blank_portrait_placeholder.png",
-      bg: "bg-[#DCE1E8]",
-      img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Blank_portrait_placeholder.png",
+        "https://xbattery.energy/_next/image?url=%2Fimages%2Flogo1.webp&w=384&q=75",
+      bg: "bg-[#FF5A4F]",
+      img: "https://media.licdn.com/dms/image/v2/D563DAQFvB1g3Qm3YHw/image-scale_191_1128/B56ZmA4lwyJ0Ac-/0/1758803943725/xbattery_cover?e=1761724800&v=beta&t=JlFCsOLjwe2SvLerZ8B13ot3sqN0AN00Yc9riyz1qRg",
     },
   ];
 
   return (
     <section className="w-full bg-[#E8EBEF] flex flex-col">
-      {/* Header */}
-      <div className="bg-[#CEFF00] text-black flex flex-wrap items-center justify-between px-8 py-6">
-        <div className="text-3xl font-bold">
-          Hurry! Tickets are almost gone.
-        </div>
-        <div className="flex flex-col sm:flex-row items-center gap-6 text-base">
-          <div className="flex items-center gap-2">
-            <span>📅</span> <span>10/23/2025</span>
-          </div>
-          <span>/</span>
-          <div className="flex items-center gap-2">
-            <span>📍</span> <span>NYC AND VIRTUAL</span>
-          </div>
-        </div>
-        <button className="bg-black text-white px-5 py-2.5 rounded-lg hover:bg-gray-800">
-          Register now →
-        </button>
-      </div>
-
       {/* Speaker Section */}
       <div className="grid grid-cols-1 md:grid-cols-4 bg-[#E8EBEF]">
         {speakers.map((spk, i) => (
@@ -92,7 +73,7 @@ export default function New2() {
                 <img
                   src={spk.companyLogo}
                   alt="logo"
-                  className="mt-4 h-6 object-contain"
+                  className="mt-4 h-6 object-contain "
                 />
               )}
             </div>
@@ -102,11 +83,11 @@ export default function New2() {
 
       {/* Colored Footer Band */}
       <div className="h-2 w-full flex">
-        <div className="flex-1 bg-pink-500" />
-        <div className="flex-1 bg-lime-400" />
-        <div className="flex-1 bg-blue-600" />
-        <div className="flex-1 bg-red-500" />
-        <div className="flex-1 bg-purple-600" />
+        <div className="flex-1 bg-[#FC45AC]" />
+        <div className="flex-1 bg-[#8DF28B]" />
+        <div className="flex-1 bg-[#97F1E6]" />
+        <div className="flex-1 bg-[#FF5A4F]" />
+        <div className="flex-1 bg-[#A46FF1]" />
       </div>
     </section>
   );
