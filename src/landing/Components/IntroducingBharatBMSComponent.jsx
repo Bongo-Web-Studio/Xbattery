@@ -42,7 +42,7 @@ export default function IntroducingBharatBMSComponent() {
           size={40}
         />
       ),
-      text: "Thermal — real-time sensing & runaway detect",
+      text: "Thermal — real-time sensing & runaway detect ",
     },
   ];
 
@@ -55,9 +55,9 @@ export default function IntroducingBharatBMSComponent() {
 
       {/* Top Border Row */}
       <div className="w-full flex h-[4rem] relative z-10">
-        <div className="w-[3%] border-t border-b border-r border-[#41424A]"></div>
+        <div className="w-[3%]  border-[#41424A] bg-[#FFFFFF]"></div>
         <div className="w-[94%] border-t border-b border-[#41424A]"></div>
-        <div className="w-[3%] border-t border-b border-l border-[#41424A]"></div>
+        <div className="w-[3%]  border-[#41424A] bg-[#FFFFFF] "></div>
       </div>
 
       {/* Main Content */}
@@ -128,6 +128,13 @@ export default function IntroducingBharatBMSComponent() {
           </div>
         </div>
         <div className="w-[3%] border-b border-l border-[#41424A]"></div>
+      </div>
+
+      {/* Top Border Row */}
+      <div className="w-full flex h-[4rem] relative z-10">
+        <div className="w-[3%] border-t border-r border-[#41424A] bg-[#FFFFFF]"></div>
+        <div className="w-[94%] border-t border-b border-[#41424A]"></div>
+        <div className="w-[3%] border-t  border-l border-[#41424A] bg-[#FFFFFF] "></div>
       </div>
     </div>
   );

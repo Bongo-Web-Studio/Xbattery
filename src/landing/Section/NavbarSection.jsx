@@ -37,7 +37,7 @@ export default function TelkomNavbar() {
 
   return (
     <motion.header
-      className="sticky top-4 left-0 z-50 flex justify-center items-center w-full"
+      className="sticky top-0 left-0 z-50 flex justify-center items-center w-full"
       initial="hidden"
       animate="visible"
       variants={fadeSlide}

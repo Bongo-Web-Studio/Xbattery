@@ -116,7 +116,7 @@ function HeroSection1Base() {
         autoPlay={!prefersReducedMotion}
         muted
         playsInline
-        loop
+
         onLoadedData={() => setVideoLoaded(true)}
         aria-hidden={!videoLoaded} // hide from assistive tech until visible/loaded
       >
@@ -144,7 +144,7 @@ function HeroSection1Base() {
       {/* Foreground Content */}
       <div className="relative z-10 text-center px-4 mt-5 lg:mt-[4.8rem] lg:ml-[2.3rem]">
         <h1 className="max-w-2xl text-4xl md:text-7xl lg:text-7xl font-bold text-start">
-          BharatBMS Powering India's Energy Future
+          Xbattery Powering India's Energy Future
         </h1>
 
         <p className="max-w-[350px] text-start text-lg mt-[2.2rem]">

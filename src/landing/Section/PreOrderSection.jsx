@@ -1,78 +1,44 @@
-"use client";
-import React, { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { BiSolidQuoteLeft, BiSolidQuoteRight } from "react-icons/bi";
+import AIWorkflowSection from "./AIWorkflowSection";
 
 export default function PreOrderSection() {
-  const numberRef = useRef(null);
-
-  useEffect(() => {
-    const el = numberRef.current;
-    const obj = { value: 31517 };
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
-        start: "top 80%",
-        once: true,
-      },
-    });
-
-    tl.to(obj, {
-      value: 31544,
-      duration: 2.5,
-      ease: "power2.out",
-      onUpdate: () => {
-        el.textContent = Math.floor(obj.value).toLocaleString();
-      },
-    });
-
-    return () => {
-      if (tl.scrollTrigger) tl.scrollTrigger.kill();
-      tl.kill();
-    };
-  }, []);
-
   return (
     <section
-      className="flex  flex-col justify-start items-start  bg-[#0F0F0F] text-white w-full  text-center overflow-hidden "
-      aria-label="HopeRise Cabs Impact Statistics"
+      className="w-full bg-white text-black overflow-hidden"
+      aria-label="BharatBMS Impact & Overview"
     >
-      {" "}
-      {/* Top Border Row */}
-      <div className="w-full flex h-[4rem] relative z-10">
-        <div className="w-[3%] border-t border-b border-r border-[#41424A]"></div>
-        <div className="w-[94%] border-t border-b border-[#41424A]"></div>
-        <div className="w-[3%] border-t border-b border-l border-[#41424A]"></div>
+      {/* top border row */}
+      <div className="w-full flex h-16">
+        <div className="w-[3%] bg-[#020202]" />
+        <div className="w-[94%] border-l border-r border-gray-400" />
+        <div className="w-[3%] bg-[#020202]" />
       </div>
-      <div className="w-full flex  relative z-10">
-        <div className="w-[3%] border-t border-b border-r border-[#41424A]"></div>
-        <div className="w-[94%] border-t border-b border-[#41424A]">
-          <div>
-            <div
+
+      {/* main content area */}
+      <div className="w-full flex">
+        <div className="w-[3%] border-t border-b border-r  border-gray-300" />
+        <div className="w-[94%] border-t border-b  border-gray-300">
+          <div className="">
+            <div className="flex">
+              {/* Quote / Message */}
+              <div className="flex flex-col justify-center items-center w-full">
              
-              className="flex flex-col justify-center items-center"
-            >
-              {/* Heading */}
-              <h1  style={{ fontFamily: "ppneuebitbold" }} className="text-5xl md:text-6xl  text-center lg:text-7xl xl:text-8xl  max-w-5xl leading-tight">
-                Totally Pre Order since we start
-              </h1>
 
-              {/* Animated Number */}
-              <h2  style={{ fontFamily: "ppneuebitbold" }}
-                ref={numberRef}
-                className="text-[120px] sm:text-[130px] md:text-[200px] lg:text-[280px]  text-[#97F1E6]  leading-none select-none w-full border-t border-gray-500 bg-[#1A1A1A]"
-              >
-                31,527
-              </h2>
-
-              {/* Subtext */}
+                <div className="flex justify-center items-center w-full mt-">
+                  <AIWorkflowSection />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="w-[3%] border-t border-b border-l border-[#41424A]"></div>
+        <div className="w-[3%] border-t border-b border-l  border-gray-300" />
+      </div>
+
+      {/* bottom border row */}
+      <div className="w-full flex h-16">
+        <div className="w-[3%] bg-white" />
+        <div className="w-[94%] border-l border-r  border-gray-300" />
+        <div className="w-[3%] bg-white" />
       </div>
     </section>
   );

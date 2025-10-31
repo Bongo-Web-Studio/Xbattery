@@ -69,14 +69,15 @@ export default function FeaturesAndSpecificationsComponent() {
   );
 
   return (
-    <section className="w-full h-full flex flex-col justify-center items-center bg-[#121212]">
+    <section className="w-full h-full flex flex-col justify-center items-center bg-white">
       {/* Top grid row */}
-      <div className="flex w-full">
-        <div className="w-[20%] border-r border-b border-gray-500 bg-[#1A1A1A]" />
-        <div className="w-[60%] flex flex-col justify-center items-center border-b border-gray-500 bg-[#121212] gap-10 p-8" />
-        <div className="w-[20%] border-l border-b border-gray-500 bg-[#1A1A1A]" />
+  
+    {/* Top Border Row */}
+      <div className="w-full flex h-[4rem] relative z-10">
+        <div className="w-[3%]  border-[#41424A] "></div>
+        <div className="w-[94%]  border-b border-[#41424A]"></div>
+        <div className="w-[3%]  border-[#41424A]  "></div>
       </div>
-
       {/* Main content */}
       <div className="flex w-full">
         <div className="w-[3%] border-r border-b border-gray-500" />
@@ -192,6 +193,13 @@ export default function FeaturesAndSpecificationsComponent() {
           </div>
         </div>
         <div className="w-[3%] border-l border-b border-gray-500" />
+      </div>
+
+          {/* Top Border Row */}
+      <div className="w-full flex h-[4rem] relative z-10">
+        <div className="w-[3%] border-t border-b border-r border-[#41424A] "></div>
+        <div className="w-[94%] border-t border-b border-[#41424A]"></div>
+        <div className="w-[3%] border-t border-b border-l border-[#41424A]  "></div>
       </div>
     </section>
   );

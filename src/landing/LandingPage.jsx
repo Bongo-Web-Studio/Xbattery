@@ -23,6 +23,8 @@ import TrustedByMarqueeComponent from "./Components/TrustedByMarqueeComponent";
 import IntroducingBharatBMSComponent from "./Components/IntroducingBharatBMSComponent";
 import FeaturesAndSpecificationsComponent from "./Components/FeaturesAndSpecificationsComponent";
 import PreOrderSection from "./Section/PreOrderSection";
+import CustomerStoryCard from "./Components/CustomerStoryCard";
+import TestimonialHeroComponent from "./Components/TestimonialHeroComponent";
 
 /**
  * LandingPage Component
@@ -53,29 +55,31 @@ export default function LandingPage() {
       {/* Optional alternate hero */}
 
       {/* 🚕 Booking */}
-      <TrustedByMarqueeComponent />
-
-      {/* 🛞 Choose Your Ride */}
-      <IntroducingBharatBMSComponent />
-      {/* <HeroSection /> */}
 
       {/* 📊 Journey Count */}
       <PreOrderSection />
 
+      {/* <TrustedByMarqueeComponent /> */}
+      {/* 🛞 Choose Your Ride */}
+      <IntroducingBharatBMSComponent />
+      {/* <HeroSection /> */}
+
       {/* 🌍 Real Stories */}
-      <FeaturesAndSpecificationsComponent />
+      <CustomerStoryCard/>
+
 
       {/* 🛣️ Popular Routes */}
       <PopularCabRoutesComponent />
+
+      <TestimonialHeroComponent/>
 
       {/* 📞 Contact & FAQ */}
       <ContactFAQuestionsSection />
 
       {/* ⚡ Responsive CTA */}
       <CTASection />
-      <New2/>
-      <NewsSection/>
-
+      <New2 />
+      <NewsSection />
     </main>
   );
 }
