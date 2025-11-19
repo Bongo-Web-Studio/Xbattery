@@ -8,14 +8,14 @@ export default function New2() {
       title: "Founder & CEO of Xbattery ",
       tag: "Ex-Microsoft",
       bg: "bg-[#96F1E8]",
-      img: "https://media.licdn.com/dms/image/v2/D5603AQHqf0LTNEUzSw/profile-displayphoto-scale_400_400/B56ZlxEb7yKIAg-/0/1758538613019?e=1762992000&v=beta&t=PZ64aOmB7zffCamYFCRv90WlKqZAC60KwrsWfTXXUnI",
+      img: "./ceo.png",
     },
     {
       name: "Sonu Mishra",
       title: "Co-Founder & CTO of Xbattery",
       company: "CTO",
       bg: "bg-[#A46FF1]",
-      img: "https://media.licdn.com/dms/image/v2/D4E03AQHCapSM4Jh_TQ/profile-displayphoto-scale_400_400/B4EZmBXi1VKgAg-/0/1758812063570?e=1762992000&v=beta&t=_FJS3peknKHchStKgWZeJPe7sUayFsR40M-Dq89tD_4",
+      img: "./cto.png",
     },
     {
       name: "Varshith Rao",
@@ -23,7 +23,7 @@ export default function New2() {
       companyLogo:
         "https://xbattery.energy/_next/image?url=%2Fimages%2Flogo1.webp&w=384&q=75",
       bg: "bg-[#8DF28B]",
-      img: "https://media.licdn.com/dms/image/v2/D5603AQGilYy8kfLpHA/profile-displayphoto-scale_400_400/B56ZnDfHvRHAAg-/0/1759921344776?e=1762992000&v=beta&t=vnSYqHvbKqSUYhabsopMmdDJ_BL-h1DKV7Db-K7p6iQ ",
+      img: "./cmo.png",
     },
     {
       name: "Xbattery Team",
@@ -31,7 +31,7 @@ export default function New2() {
       companyLogo:
         "https://xbattery.energy/_next/image?url=%2Fimages%2Flogo1.webp&w=384&q=75",
       bg: "bg-[#FF5A4F]",
-      img: "https://media.licdn.com/dms/image/v2/D563DAQFvB1g3Qm3YHw/image-scale_191_1128/B56ZmA4lwyJ0Ac-/0/1758803943725/xbattery_cover?e=1761724800&v=beta&t=JlFCsOLjwe2SvLerZ8B13ot3sqN0AN00Yc9riyz1qRg",
+      img: "./team.png",
     },
   ];
 

@@ -31,42 +31,9 @@ export default function AIWorkflowSection({
 
   return (
     <section className="w-full flex flex-col items-center mt-10">
-      {/* Top thin announcement bar */}
-      <div className="w-full border-b border-transparent">
-        <div className="w-full ">
-          <div className="flex items-center justify-center text-[12px] uppercase tracking-wider py-3 text-[#6b6b6b]">
-            <span className="inline-flex items-center mr-2">
-              <span className="w-2 h-2  bg-[#FF5A4F]  inline-block mr-2 shadow-sm" />
-            </span>
-            YOUR COMPLETE TOOLKIT FOR AI AUTOMATION
-          </div>
-        </div>
-      </div>
+      
 
-      {/* Navigation Tabs */}
-      <div className="max-w-[1250px] w-full  ">
-        <div className="mt-2 bg-white  border border-gray-100 flex justify-center items-center shadow-sm">
-          <nav className="flex items-center gap-4 px-4 py-3 overflow-x-auto">
-            {DEFAULT_TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActive(tab)}
-                className={`relative px-4 py-2 text-sm font-semibold shadow-sm border ${
-                  active === tab
-                    ? "text-[#222222] bg-white border-[#f0f0f0]"
-                    : "text-[#6b6b6b] bg-transparent border-transparent"
-                }`}
-                aria-current={active === tab ? "page" : undefined}
-              >
-                {active === tab && (
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[92%] h-0.5 bg-[#FF5A4F] rounded" />
-                )}
-                {tab}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </div>
+
 
       {/* Hero / Media area */}
       <div className="max-w-[1250px] w-full">
@@ -84,10 +51,6 @@ export default function AIWorkflowSection({
                   playsInline
                 />
 
-                {/* Label overlay (optional) */}
-                <div className="absolute left-6 top-6 px-3 py-1 rounded-md bg-black/40 text-white text-xs font-medium">
-                  {active}
-                </div>
 
                 {/* bottom-right play button (decorative) */}
                 <button className="absolute right-6 bottom-6 w-12 h-12 rounded-full bg-black/70 flex items-center justify-center shadow-lg">
@@ -104,10 +67,7 @@ export default function AIWorkflowSection({
       {/* CTA row under media */}
       <div className="max-w-[1250px] w-full px-6">
         <div className="flex items-center justify-center gap-4 py-8">
-          <svg className="w-5 h-5 text-[#ff7a18]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 2L3 13h6l-2 9L21 6h-6l-4-4z" fill="#ff7a18" />
-          </svg>
-          <div className="text-center text-[15px] font-semibold tracking-wide text-[#222222]">GET STARTED FAST WITH PRE-BUILT TEMPLATES</div>
+       
         </div>
       </div>
 

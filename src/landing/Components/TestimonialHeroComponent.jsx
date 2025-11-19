@@ -41,28 +41,19 @@ export default function TestimonialHeroComponent() {
         {/* subtle inner border top-left like the screenshot margin */}
        
 
-        {/* Logo */}
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-12 h-12 flex items-center justify-center">
-            {/* small stylized logo — replace with your logo if available */}
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="2" width="20" height="20" rx="4" fill="#efe7e3" opacity="0.06" />
-              <path d="M6 18L11 6L18 18" stroke="#efe7e3" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-          <div className="text-[#efe7e3] font-semibold text-sm tracking-wider">PORTLAND<br /><span className="text-xs uppercase opacity-70">Trail Blazers</span></div>
-        </div>
+   
 
         {/* Quote text */}
-        <blockquote className="text-[#f6efe9] font-serif text-[34px] leading-[1.05] tracking-tight mb-6">"We cut 50 hours across 3 departments down to three hours for one person for post-event feedback."</blockquote>
+        <blockquote className="text-[#f6efe9] font-serif text-[34px] leading-[1.05] tracking-tight mb-6">
+Xbattery Powering India's Energy Future
+India’s first universal Battery Management System, scaling from 5kWh to megawatt applications with modular upgrades and unmatched reliability.</blockquote>
 
         {/* Author */}
-        <div className="text-[#bfb3aa] text-sm mb-6">—David Long, Vice President, Digital and Innovation at Portland Trail Blazers</div>
 
         {/* Bottom split button bar */}
         <div className="mt-4 grid grid-cols-2 border-t border-[#6e605c] pt-4">
           <button className="bg-[#97F1E6] hover:bg-[#FF5A4F] py-3 px-6 text-sm font-medium text-black text-left flex items-center justify-center gap-3">
-            <span>Read customer story</span>
+            <span>Pre Order</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12h14M13 6l6 6-6 6" stroke="black" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

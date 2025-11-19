@@ -12,7 +12,7 @@ import React from "react";
  */
 
 export default function CustomerStorySection({
-  imageSrc = "http://localhost:5173/xbattery1.jpg",
+  imageSrc = "./xbattery1.jpg",
 }) {
   return (
     <>
@@ -84,11 +84,7 @@ export default function CustomerStorySection({
               </div>
 
               {/* CTA below the card */}
-              <div className="mt-6 lg:mt-8=">
-                <button className="mx-auto lg:mx-0 bg-[#FF5A4F] text-black text-lg py-2 px-7">
-                  See more customer stories
-                </button>
-              </div>
+        
             </div>
 
             {/* Right image with framed gradient and arrows */}
