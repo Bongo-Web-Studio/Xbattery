@@ -30,14 +30,14 @@ export default function AIWorkflowSection({
   const activeVideo = videos[active] || videoSrc;
 
   return (
-    <section className="w-full flex flex-col items-center mt-10">
+    <section className="w-full flex flex-col items-center ">
       
 
 
 
       {/* Hero / Media area */}
-      <div className="max-w-[1250px] w-full">
-        <div className="relative mt-6 bg-gradient-to-r from-[#efe9df] via-[#f3efe9] to-[#e6efe8]  overflow-hidden">
+      <div className=" w-full">
+        <div className="relative  bg-gradient-to-r from-[#efe9df] via-[#f3efe9] to-[#e6efe8]  overflow-hidden">
           <div className=" flex justify-center">
             <div className="relative w-full">
               <div className=" shadow-[0_6px_30px_rgba(0,0,0,0.06)] overflow-hidden border border-[#e9e6e2] bg-white relative">

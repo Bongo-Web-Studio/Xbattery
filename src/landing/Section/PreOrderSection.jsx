@@ -8,7 +8,7 @@ export default function PreOrderSection() {
       aria-label="BharatBMS Impact & Overview"
     >
       {/* top border row */}
-      <div className="w-full flex h-16">
+      <div className="w-full flex lg:h-16 h-6">
         <div className="w-[3%] bg-[#020202]" />
         <div className="w-[94%] border-l border-r border-gray-400" />
         <div className="w-[3%] bg-[#020202]" />
@@ -24,7 +24,7 @@ export default function PreOrderSection() {
               <div className="flex flex-col justify-center items-center w-full">
              
 
-                <div className="flex justify-center items-center w-full mt-">
+                <div className="flex justify-center items-center w-full ">
                   <AIWorkflowSection />
                 </div>
               </div>
@@ -35,7 +35,7 @@ export default function PreOrderSection() {
       </div>
 
       {/* bottom border row */}
-      <div className="w-full flex h-16">
+      <div className="w-full flex lg:h-16 h-6">
         <div className="w-[3%] bg-white" />
         <div className="w-[94%] border-l border-r  border-gray-300" />
         <div className="w-[3%] bg-white" />
